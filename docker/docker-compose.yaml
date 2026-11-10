@@ -1,0 +1,52 @@
+version: "3.8" 
+ 
+services:
+
+  # ---------- FastAPI Server ----------
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: llm-vlm-api
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_TYPE=llm
+      - MODEL_PATH=outputs/merged_model
+      - LOAD_IN_4BIT=true
+    volumes:
+      - ../outputs:/app/outputs
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  # ---------- Gradio Demo UI ----------
+  demo:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: llm-vlm-demo
+    command: ["python3", "demo/app.py"]
+    ports:
+      - "7860:7860"
+    environment:
+      - MODEL_TYPE=llm
+      - MODEL_PATH=outputs/merged_model
+      - LOAD_IN_4BIT=true
+    volumes:
+      - ../outputs:/app/outputs
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+    depends_on:
+      - api

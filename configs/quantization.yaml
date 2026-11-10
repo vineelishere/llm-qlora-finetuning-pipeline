@@ -1,0 +1,43 @@
+# ===========================================
+# Quantization Configuration
+# ===========================================
+
+input:
+  finetuned_model_path: "outputs/llm_finetuned/final_model"
+  base_model: "Qwen/Qwen2.5-1.5B-Instruct"    # Base weights the LoRA adapter is merged into
+
+# ---------- Method 1: bitsandbytes (4-bit, fastest path to a running server) ----------
+bitsandbytes:
+  enabled: true
+  load_in_4bit: true
+  bnb_4bit_quant_type: "nf4"
+  bnb_4bit_compute_dtype: "bfloat16"
+  output_dir: "outputs/quantized/bnb_4bit"
+
+# ---------- Method 2: GGUF via llama.cpp (CPU / edge deployment) ----------
+gguf:
+  enabled: true
+  quant_levels:
+    - "q4_k_m"     # maximum compression, smallest quality loss
+    - "q5_k_m"     # balanced
+    - "q8_0"       # near full precision
+  output_dir: "outputs/quantized/gguf"
+
+# ---------- Method 3: AWQ (best GPU serving throughput) ----------
+awq:
+  enabled: false
+  w_bit: 4
+  q_group_size: 128
+  zero_point: true
+  calibration_dataset: "databricks/databricks-dolly-15k"
+  calibration_samples: 128
+  output_dir: "outputs/quantized/awq"
+
+evaluation:
+  compare_methods: true
+  metrics:
+    - "perplexity"
+    - "model_size_mb"
+    - "inference_latency_ms"
+    - "tokens_per_second"
+  report_output: "outputs/quantization_report.json"

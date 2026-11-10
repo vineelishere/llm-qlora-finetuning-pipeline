@@ -1,0 +1,18 @@
+{
+  "model": "Qwen/Qwen2-VL-2B-Instruct",
+  "rank": 16,
+  "lora_alpha": 32,
+  "wrapped_layers": 112,
+  "total_params": 2208985600,
+  "trainable_params": 4358144,
+  "trainable_percent": 0.197,
+  "adapter_size_mb_bf16": 8.31,
+  "per_module_trainable_params": {
+    "q_proj": 1376256,
+    "k_proj": 802816,
+    "v_proj": 802816,
+    "o_proj": 1376256
+  },
+  "config_file": "configs/vlm_finetune.yaml",
+  "timestamp": "2026-11-10T16:10:53"
+}

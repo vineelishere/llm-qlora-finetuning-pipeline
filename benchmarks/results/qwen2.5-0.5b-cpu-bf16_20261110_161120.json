@@ -1,0 +1,74 @@
+{
+  "label": "qwen2.5-0.5b-cpu-bf16",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "timestamp": "2026-11-10T16:11:20",
+  "environment": {
+    "python": "3.14.3",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "cpu_count": 12,
+    "device": "cpu",
+    "dtype": "bfloat16",
+    "torch": "2.15.0+cpu",
+    "cuda_available": false,
+    "torch_threads": 8,
+    "transformers": "5.22.2"
+  },
+  "config": {
+    "runs_per_prompt": 1,
+    "max_new_tokens": 16,
+    "decoding": "greedy",
+    "prompts": 3
+  },
+  "load_time_seconds": 4.47,
+  "artifact_size_mb": null,
+  "peak_rss_mb": 1375.55,
+  "aggregate": {
+    "generated_tokens": 48,
+    "decode_seconds": 6.667,
+    "tokens_per_second": 7.2,
+    "latency": {
+      "runs": 3,
+      "mean_ms": 2222.17,
+      "p50_ms": 2231.02,
+      "p95_ms": 2320.41,
+      "min_ms": 2105.15,
+      "max_ms": 2330.35
+    }
+  },
+  "per_prompt": {
+    "Explain the difference between LoRA and QLoRA in two sentences.": {
+      "latency": {
+        "runs": 1,
+        "mean_ms": 2330.35,
+        "p50_ms": 2330.35,
+        "p95_ms": 2330.35,
+        "min_ms": 2330.35,
+        "max_ms": 2330.35
+      },
+      "tokens_per_second": 6.87
+    },
+    "Write a Python function that reverses a linked list.": {
+      "latency": {
+        "runs": 1,
+        "mean_ms": 2105.15,
+        "p50_ms": 2105.15,
+        "p95_ms": 2105.15,
+        "min_ms": 2105.15,
+        "max_ms": 2105.15
+      },
+      "tokens_per_second": 7.6
+    },
+    "Summarize why quantizing a language model reduces serving cost.": {
+      "latency": {
+        "runs": 1,
+        "mean_ms": 2231.02,
+        "p50_ms": 2231.02,
+        "p95_ms": 2231.02,
+        "min_ms": 2231.02,
+        "max_ms": 2231.02
+      },
+      "tokens_per_second": 7.17
+    }
+  },
+  "perplexity": null
+}

@@ -1,0 +1,62 @@
+# ===========================================
+# Python
+# ===========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+*.egg-info/
+.pytest_cache/
+
+# ===========================================
+# Model outputs & checkpoints (large binaries - never committed)
+# ===========================================
+outputs/
+*.gguf
+*.bin
+*.safetensors
+*.pt
+*.pth
+checkpoints/
+
+# ===========================================
+# Datasets (cached locally by HuggingFace)
+# ===========================================
+data/raw/
+data/processed/
+*.csv
+*.json
+!configs/*.json
+# Benchmark + evaluation artifacts are evidence, so they are committed
+!benchmarks/results/*.json
+
+# ===========================================
+# Logs
+# ===========================================
+logs/
+*.log
+wandb/
+
+# ===========================================
+# llama.cpp (auto-cloned during GGUF quantization)
+# ===========================================
+llama.cpp/
+
+# ===========================================
+# Secrets - never commit
+# ===========================================
+.env
+
+# ===========================================
+# IDE / OS files
+# ===========================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.ipynb_checkpoints/

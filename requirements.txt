@@ -1,0 +1,38 @@
+# ---------- Core modeling / training ----------
+# transformers >= 4.56 for the dtype= loading arg; this code also runs on v5,
+# where AutoModelForVision2Seq was renamed (handled by a fallback import).
+torch>=2.1.0
+transformers>=4.56.0
+peft>=0.13.0
+bitsandbytes>=0.44.0
+accelerate>=1.0.0
+trl>=0.11.0
+
+# ---------- Data ----------
+datasets>=3.0.0
+pyyaml
+tqdm
+numpy
+sentencepiece
+protobuf
+einops
+
+# ---------- Evaluation & tracking ----------
+evaluate
+scikit-learn
+wandb
+psutil            # peak-memory measurement in the evaluation report
+
+# ---------- Serving / demo ----------
+fastapi
+uvicorn[standard]
+pydantic>=2.0
+gradio
+pillow
+opencv-python-headless
+
+# ---------- Optional: AWQ quantization ----------
+# autoawq currently breaks against recent transformers releases
+# (Qwen2Attention.forward signature), so it is not installed by default.
+# Install it in its own environment when you want to try AWQ:
+#   pip install autoawq

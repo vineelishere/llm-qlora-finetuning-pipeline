@@ -1,0 +1,21 @@
+{
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "rank": 16,
+  "lora_alpha": 32,
+  "wrapped_layers": 196,
+  "total_params": 1543714304,
+  "trainable_params": 18464768,
+  "trainable_percent": 1.196,
+  "adapter_size_mb_bf16": 35.22,
+  "per_module_trainable_params": {
+    "q_proj": 1376256,
+    "k_proj": 802816,
+    "v_proj": 802816,
+    "o_proj": 1376256,
+    "gate_proj": 4702208,
+    "up_proj": 4702208,
+    "down_proj": 4702208
+  },
+  "config_file": "configs/llm_finetune.yaml",
+  "timestamp": "2026-11-10T16:09:22"
+}
